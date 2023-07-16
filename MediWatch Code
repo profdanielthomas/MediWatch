@@ -1,0 +1,42 @@
+import random
+import time
+
+class MediWatch:
+    def __init__(self):
+        self.threshold = 80  # Anomaly threshold for heart rate
+
+    def collect_data(self):
+        # Simulate data collection from wearable device
+        heart_rate = random.randint(60, 100)  # Simulated heart rate
+        blood_pressure = random.randint(90, 140)  # Simulated blood pressure
+        oxygen_saturation = random.randint(95, 100)  # Simulated oxygen saturation
+
+        return heart_rate, blood_pressure, oxygen_saturation
+
+    def analyze_data(self, heart_rate):
+        # Analyze the data and detect anomalies
+        if heart_rate > self.threshold:
+            return True  # Anomaly detected
+        else:
+            return False  # No anomaly detected
+
+    def send_alert(self, anomaly):
+        # Send alert/notification if an anomaly is detected
+        if anomaly:
+            print("Anomaly detected! Take necessary action.")
+
+# Usage example
+mediwatch = MediWatch()
+
+while True:
+    # Collect data from wearable device
+    heart_rate, blood_pressure, oxygen_saturation = mediwatch.collect_data()
+
+    # Analyze the data for anomalies
+    anomaly = mediwatch.analyze_data(heart_rate)
+
+    # Send alert if an anomaly is detected
+    mediwatch.send_alert(anomaly)
+
+    # Wait for a specific duration before collecting the next data point
+    time.sleep(1)  # Simulated delay
